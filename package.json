@@ -1,0 +1,25 @@
+{
+  "name": "livestate-comments",
+  "version": "0.0.5",
+  "main": "dist/livestate-comments.es.js",
+  "exports": {
+    ".": "./dist/livestate-comments.es.js"
+  },
+  "types": "types/LivestateComments.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "lit": "^2.0.2",
+    "phx-live-state": "^0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9"
+  }
+}
