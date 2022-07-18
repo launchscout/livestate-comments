@@ -17,7 +17,7 @@ export class LivestateComments extends LitElement {
   comments: Array<Comment> = [];
 
   private controller = new LiveStateController(this, {
-    channel: 'comments:all',
+    channel: `comments:${window.location.href}`,
     properties: ['comments'],
     events: {
       send: ['add_comment'],
