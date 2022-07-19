@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
-import { LiveStateController } from 'phx-live-state';
+import LiveState, { connectElement } from 'phx-live-state';
 
 type Comment = {
   author: string;
@@ -16,15 +16,20 @@ export class LivestateComments extends LitElement {
   @state()
   comments: Array<Comment> = [];
 
-  private controller = new LiveStateController(this, {
-    channel: `comments:${window.location.href}`,
-    properties: ['comments'],
-    events: {
-      send: ['add_comment'],
-      receive: ['comment_added']
-    }
-  });
+  liveState: LiveState;
 
+  connectedCallback() {
+    super.connectedCallback();
+    console.log(`connecting to ${this.url}`);
+    this.liveState = new LiveState(this.url, `comments:${window.location.href}`);
+    connectElement(this.liveState, this, {
+      properties: ['comments'],
+      events: {
+        send: ['add_comment'],
+        receive: ['comment_added']
+      }
+    });
+  }
   @query('input[name="author"]')
   author: HTMLInputElement | undefined;
 
@@ -60,7 +65,8 @@ export class LivestateComments extends LitElement {
       <div part="previous-comments">
         ${this.comments?.map(comment => html`
         <div part="comment">
-          <span part="comment-author">${comment.author}</span> at <span part="comment-created-at">${comment.inserted_at}</span>
+          <span part="comment-author">${comment.author}</span> at <span
+            part="comment-created-at">${comment.inserted_at}</span>
           <div part="comment-text">${comment.text}</div>
         </div>
         `)}

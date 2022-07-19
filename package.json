@@ -1,6 +1,6 @@
 {
   "name": "livestate-comments",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/livestate-comments.es.js",
   "exports": {
     ".": "./dist/livestate-comments.es.js"
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "lit": "^2.0.2",
-    "phx-live-state": "^0.0.3"
+    "phx-live-state": "^0.0.5"
   },
   "devDependencies": {
     "typescript": "^4.5.4",
