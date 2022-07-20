@@ -1,6 +1,6 @@
 {
   "name": "livestate-comments",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/livestate-comments.es.js",
   "exports": {
     ".": "./dist/livestate-comments.es.js"
@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "lit": "^2.0.2",
