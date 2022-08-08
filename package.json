@@ -1,6 +1,6 @@
 {
   "name": "livestate-comments",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "main": "dist/livestate-comments.es.js",
   "exports": {
     ".": "./dist/livestate-comments.es.js"

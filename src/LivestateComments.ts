@@ -74,8 +74,10 @@ export class LivestateComments extends LitElement {
         ${this.comments?.map(comment => html`
         <div part="comment">
           <div part="comment-text">${comment.text}</div>
-          <span part="comment-author">${comment.author}</span> on <span
-            part="comment-created-at">${this.formatDateTime(comment.inserted_at)}</span>
+          <div part="byline">
+            <span part="comment-author">${comment.author}</span> on <span
+              part="comment-created-at">${this.formatDateTime(comment.inserted_at)}</span>
+          </div>
         </div>
         `)}
       </div>
