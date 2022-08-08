@@ -81,17 +81,17 @@ export class LivestateComments extends LitElement {
         </div>
         `)}
       </div>
-      <div part=" new-comment">
-        <form @submit=${this.addComment}>
+      <div part="new-comment">
+        <form @submit=${this.addComment} part="form">
           <div part="comment-field">
-            <label>Author</label>
-            <input name="author" required />
+            <label part="label">Author</label>
+            <input part="author-input" name="author" required />
           </div>
           <div part="comment-field">
-            <label>Comment</label>
-            <textarea name="text" required></textarea>
+            <label part="label">Comment</label>
+            <textarea part="comment-input" name="text" required></textarea>
           </div>
-          <button>Add Comment</button>
+          <button part="add-comment-button">Add Comment</button>
         </form>
       </div>
     `;
