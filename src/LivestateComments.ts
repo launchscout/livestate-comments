@@ -18,6 +18,8 @@ export class LivestateComments extends LitElement {
 
   liveState: LiveState;
 
+  dateTimeFormatter = new Intl.DateTimeFormat('default');
+
   connectedCallback() {
     super.connectedCallback();
     console.log(`connecting to ${this.url}`);
@@ -60,14 +62,20 @@ export class LivestateComments extends LitElement {
     this.text!.value = '';
   }
 
+  formatDateTime(dateTime) {
+    const createdAt = new Date()
+    createdAt.setTime(Date.parse(dateTime))
+    return this.dateTimeFormatter.format(createdAt);
+  }
+
   render() {
     return html`
       <div part="previous-comments">
         ${this.comments?.map(comment => html`
         <div part="comment">
-          <span part="comment-author">${comment.author}</span> at <span
-            part="comment-created-at">${comment.inserted_at}</span>
           <div part="comment-text">${comment.text}</div>
+          <span part="comment-author">${comment.author}</span> on <span
+            part="comment-created-at">${this.formatDateTime(comment.inserted_at)}</span>
         </div>
         `)}
       </div>
